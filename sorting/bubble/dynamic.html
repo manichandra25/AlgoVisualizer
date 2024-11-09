@@ -1,0 +1,205 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="./dyna.js"></script>
+</head>
+<body>
+    <header>
+        <div class="main1">
+        <ul>
+          <li ><a href="../../index.html">Home</a></li>
+          <li ><a href="../../index/Algo.html">Algorithms</a></li>
+        </ul>
+        </div>
+    </header>
+    <div class="bub" align="center">
+        <h1>Bubble Sort</h1>
+        <p style="width: 70%;font-size: 25px;">Bubble sort works on the repeatedly swapping of adjacent elements 
+            until they are not in the intended order. It is called bubble sort because the movement
+             of array elements is just like the movement of air bubbles in the water. Bubbles in water rise up to the surface; 
+             similarly, the array elements in bubble sort move to the end in each iteration.
+        </p><br><br><br>
+        <div id="expla"></div>
+    </div>
+    <div id="cont" align="center">
+        <div id="cust" >
+            <p>Custom Input<br><br>
+                <table>
+                    <tr><td>Array Size</td>
+                    <td><input type="number" id="find"></td></tr>
+                    <tr><td></td><td><button id="newA">create new</button></td></tr>
+                    <tr><td><br></td></tr>
+                    <tr><td style="font-size:18px;">Speed</td>
+                    <td><select id="speed" style="height: 30px; width: 100px;" onchange="setSpeed()">
+                        <option value="100">Normal</option>
+                        <option value="200">Slow</option>
+                        <option value="50">Fast</option>
+                    </select></td></tr>
+                </table>
+            </p>
+        </div>
+        <div id="visu">
+            <table class="table" id="arr">
+                <caption style="font-size: 25;color: aqua;"> <u>Algorithm Visualization </u></caption>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ele">
+                    <td>10</td>
+                    <td>5</td>
+                    <td>77</td>
+                    <td>3</td>
+                    <td>14</td>
+                    <td>9</td>
+                    <td>190</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div id="msg" style="border: 2px solid black;width: 20%;height: 60px;text-align: center;" >
+                <p  style="margin-top: 2px;"></p><br>
+            </div><br>
+            <button id="rsrt">Reset</button>
+            <button id="strt">Sort</button>
+            <button id="pause">Pause</button>
+            </div>
+    </div>
+    <div class="analyse" align="center">
+        <h2 >Complexity</h2>
+        <table>
+            <tr>
+                <td><a href="#expla" id="wc" onclick="updateArray([167,130,110,98,86,29,0,-2,1])">Worst Case</a></td>
+                <td>O( n<sup>2</sup> )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="ac" onclick="updateArray([2,67,45,5,90,76,494,45,2])">Average Case</a></td>
+                <td>O( n<sup>2</sup> )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="bc" onclick="updateArray([2,5,6,8,24,45,90,160,3])">Best Case</a></td>
+                <td>O( n<sup>2</sup> )</td>
+            </tr>
+        </table>
+    </div>
+    <div id="code">
+        <div class="codes">
+            <button class="proglang" onclick="smapcode(event,'c')">C</button>
+            <button class="proglang" onclick="smapcode(event,'java')">Java</button>
+            <button class="proglang" onclick="smapcode(event,'py')">Python</button>
+        </div>
+        <div id="c" class="cntnt">
+<pre>
+void bubbleSort(int arr[], int n) {
+    int i, j;
+    for (i = 0; i < n-1; i++) {       
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                // Swap arr[j] and arr[j+1]
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+void printArray(int arr[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int n, i;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    
+    int arr[n];
+    printf("Enter %d integers: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    bubbleSort(arr, n);
+    printf("Sorted array: \n");
+    printArray(arr, n);
+    return 0;
+}        
+</pre>
+        </div>
+        <div id="java" class="cntnt">
+<pre>
+class Sort 
+{
+    static void bubbleSort(int arr[], int n)
+    {
+        int i, j, temp;
+        for (i = 0; i < n - 1; i++) 
+        {
+            for (j = 0; j < n - i - 1; j++) 
+            {
+                if (arr[j] > arr[j + 1]) 
+                {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    public static void main(String args[])
+    {
+        int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+        int n = arr.length;
+        bubbleSort(arr, n);
+        for (int i = 0; i < n; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+}
+</pre>
+        </div>
+        <div id="py" class="cntnt">
+<pre>
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+        if (swapped == False):
+            break
+if __name__ == "__main__":
+    arr = [64, 34, 25, 12, 22, 11, 90]
+    bubbleSort(arr)
+    print("Sorted array:")
+    for i in range(len(arr)):
+        print("%d" % arr[i], end=" ")
+</pre>
+        </div>
+    </div>
+</body>

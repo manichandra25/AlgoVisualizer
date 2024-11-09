@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .main1 ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main1 ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .main1 ul li a {
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+
+        .side {
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .links {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 20px);
+            transform: translateY(-50%);
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .links a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .show-links {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="main1">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./Algo.html">Algorithms</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="side">
+        <div class="section">
+            <h3>Sorting</h3>
+            <img src="./sorting.jpg" alt="Sorting" height="200px" onclick="toggleLinks('sorting-links')">
+            <div class="links sorting-links">
+                <a href="../sorting/bubble/dynamic.html">Bubble Sort</a>
+                <a href="../sorting/insertion/insertion.html">Insertion Sort</a>
+                <a href="../sorting/selection/Selection.html">Selection Sort</a>
+                <a href="../sorting/quick/quick.html">Quick Sort</a>
+            </div>
+        </div>
+        <br>
+        <div class="section">
+            <h3>Searching</h3>
+            <img src="./search.png" alt="Search" height="200px" onclick="toggleLinks('searching-links')">
+            <div class="links searching-links">
+                <a href="../search/linearsrch/linear.html">Linear Search</a>
+                <a href="../search/binarysearch/binarysearch.html">Binary Search</a>
+                <a href="../search/ternery/ternery.html">Ternary Search</a>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <script>
+        function toggleLinks(className) {
+            var links = document.getElementsByClassName(className)[0];
+            if (links.classList.contains('show-links')) {
+                links.classList.remove('show-links');
+            } else {
+                var allLinks = document.querySelectorAll('.links');
+                allLinks.forEach(function(linkSection) {
+                    linkSection.classList.remove('show-links');
+                });
+                links.classList.add('show-links');
+            }
+        }
+    </script>
+</body>
+</html>

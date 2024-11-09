@@ -1,0 +1,193 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="linear2.js"></script>
+</head>
+<body >
+    <header>
+        <div class="main1">
+        <ul>
+          <li ><a href="../../index.html">Home</a></li>
+          <li ><a href="../../index/Algo.html">Algorithms</a></li>
+        </ul>
+        </div>
+    </header>
+    <div class="bub" align="center">
+        <h1>Linear Search</h1>
+        <p style="width: 70%;font-size: 25px;">
+            A linear search sequentially checks each element of the list until it finds an element that matches the target value. 
+            If the algorithm reaches the end of the list, the search terminates unsuccessfully.
+        </p><br><br><br>
+        <div id="expla"></div>
+    </div>
+    <div id="cont" align="center">
+        <div id="cust" >
+            <select id="speed" style="height: 40px; width: 100px;" onchange="setSpeed()">
+                <option value="none" selected disabled hidden>Speed</option>
+                <option value="200">Slow</option>
+                <option value="100">Normal</option>
+                <option value="50">Fast</option>
+            </select>
+        </div>
+        <div id="visu">
+            <table class="table" id="arr">
+                <caption style="font-size: 25;color: aqua;"> <u>Algorithm Visualization </u></caption><br><br>
+                <tr>
+                    <td colspan="10">
+                        <label><nbsc>Element to check :</nbsc>:</label>
+                        <input type="number" id="find" value="">
+                    </td>
+                    <td>
+                        <p1 id="exp"></p1>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ele">
+                    <td>18</td>
+                    <td>48</td>
+                    <td>92</td>
+                    <td>15</td>
+                    <td>-5</td>
+                    <td>4</td>
+                    <td>19</td>
+                    <td>28</td>
+                    <td>59</td>
+                    <td>45</td>
+                    <td>48</td>
+                    <td>-71</td>
+                    <td>10</td>
+                    <td>124</td>
+                    <td>90</td>
+                    <td>227</td>
+                    <td>20</td>
+                    <td>99</td>
+                    <td>550</td>
+                </tr>
+            </table><br><br>
+            <div id="msg" style="border: 2px solid black;width: 20%;height: 60px;text-align: center;" >
+                <p  style="margin-top: 2px;"></p><br>
+            </div><br>
+
+            <button id="rsrt">Reset</button>
+            <button id="strt">Find</button>
+            <button id="pause">Pause</button>
+            </div>
+    </div><br><br><br><br>
+    <div class="analyse" align="center">
+        <h2 >Complexity</h2>
+        <table>
+            <tr>
+                <td><a href="#expla" id="wc" onclick="cases(1)">Worst Case</a></td>
+                <td>O( n )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="ac" onclick="cases(2)">Average Case</a></td>
+                <td>O( n )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="bc" onclick="cases(3)">Best Case</a></td>
+                <td>O( 1 )</td>
+            </tr>
+        </table>
+    </div>
+    <div id="code">
+        <div class="codes">
+            <button class="proglang" onclick="smapcode(event,'c')">C</button>
+            <button class="proglang" onclick="smapcode(event,'java')">Java</button>
+            <button class="proglang" onclick="smapcode(event,'py')">Python</button>
+        </div>
+        <div id="c" class="cntnt">
+<pre>
+int search(int arr[], int N, int x)
+{
+    for (int i = 0; i < N; i++)
+    if (arr[i] == x)
+    return i;
+    return -1;
+}
+int main(void)
+{
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int x = 10;
+    int N = sizeof(arr) / sizeof(arr[0]);
+    int result = search(arr, N, x);
+    (result == -1)? 
+    printf("Element is not present in array")
+    : printf("Element is present at index %d", result);
+    return 0;
+}
+        
+</pre>
+        </div>
+        <div id="java" class="cntnt">
+<pre>
+class GFG {
+    public static int search(int arr[], int N, int x)
+    {
+        for (int i = 0; i < N; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+    public static void main(String args[])
+    {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int x = 10;
+        int result = search(arr, arr.length, x);
+        if (result == -1)
+            System.out.print(
+                "Element is not present in array");
+        else
+            System.out.print("Element is present at index "
+                             + result);
+    }
+}
+</pre>
+        </div>
+        <div id="py" class="cntnt">
+<pre>
+def search(arr, N, x):
+    for i in range(0, N):
+        if (arr[i] == x):
+            return i
+    return -1
+if __name__ == "__main__":
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+    N = len(arr)
+    result = search(arr, N, x)
+    if(result == -1):
+        print("Element is not present in array")
+    else:
+        print("Element is present at index", result)
+</pre>
+        </div>
+    </div>
+    
+</body>

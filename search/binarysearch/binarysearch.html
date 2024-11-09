@@ -1,0 +1,213 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="./binsrch2.js"></script>
+</head>
+<body >
+    <header>
+        <div class="main1">
+        <ul>
+          <li ><a href="../../index.html">Home</a></li>
+          <li ><a href="../../index/Algo.html">Algorithms</a></li>
+        </ul>
+        </div>
+    </header>
+    <div class="bub" align="center">
+        <h1>Binary Search</h1>
+        <p style="width: 70%;font-size: 25px;">
+            Binary search is a fast algorithm used to find a target value within a <b style="color: pink;">Sorted Array</b> 
+            by repeatedly dividing the search interval in half. It compares the target value with 
+            the middle element of the array and continues narrowing down the search until the value is
+             found or the interval is empty.
+        </p><br><br><br>
+        <div id="expla"></div>
+    </div>
+    <div id="cont" align="center">
+        <div id="cust" >
+            <select id="speed" style="height: 40px; width: 100px;" onchange="setSpeed()">
+                <option value="none" selected disabled hidden>Speed</option>
+                <option value="200">Slow</option>
+                <option value="100">Normal</option>
+                <option value="50">Fast</option>
+            </select>
+        </div>
+        <div id="visu">
+            <table class="table" id="arr">
+                <caption style="font-size: 25;color: aqua;"> <u>Algorithm Visualization </u></caption><br><br>
+                <tr>
+                    <td colspan="10">
+                        <label><nbsc>Element to check :</nbsc>:</label>
+                        <input type="number" id="find" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ele">
+                    <td>-84</td>
+                    <td>-51</td>
+                    <td>-12</td>
+                    <td>0</td>
+                    <td>5</td>
+                    <td>14</td>
+                    <td>19</td>
+                    <td>27</td>
+                    <td>59</td>
+                    <td>45</td>
+                    <td>48</td>
+                    <td>71</td>
+                    <td>100</td>
+                    <td>124</td>
+                    <td>190</td>
+                    <td>227</td>
+                    <td>280</td>
+                    <td>299</td>
+                    <td>550</td>
+                </tr>
+            </table><br><br>
+            <div id="msg" style="border: 2px solid black;width: 50%;height: 60px;text-align: center;" >
+                <p  style="margin-top: 2px;"></p><br>
+            </div><br>
+
+            <button id="rsrt">Reset</button>
+            <button id="strt">Find</button>
+            <button id="pause">Pause</button>
+            </div>
+    </div><br><br><br><br>
+    <div class="analyse" align="center">
+        <h2 >Complexity</h2>
+        <table>
+            <tr>
+                <td><a href="#expla" id="wc" onclick="cases(1)">Worst Case</a></td>
+                <td>O( log n )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="ac" onclick="cases(2)">Average Case</a></td>
+                <td>O( log n )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="bc" onclick="cases(3)">Best Case</a></td>
+                <td>O( 1 )</td>
+            </tr>
+        </table>
+    </div>
+    <div id="code">
+        <div class="codes">
+            <button class="proglang" onclick="smapcode(event,'c')">C</button>
+            <button class="proglang" onclick="smapcode(event,'java')">Java</button>
+            <button class="proglang" onclick="smapcode(event,'py')">Python</button>
+        </div>
+        <div id="c" class="cntnt">
+    <pre>
+int binarySearch(int arr[], int low, int high, int x) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        
+        if (arr[mid] == x)
+            return mid;
+        
+        if (arr[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    
+    return -1;
+}
+
+int main(void) {
+    int arr[] = { 2, 3, 4, 10, 40 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 10;
+    int result = binarySearch(arr, 0, n - 1, x);
+    if(result==-1)
+        printf("Element is not present in array\n");
+    else
+        printf("Element is present at index %d\n", result);
+    return 0;
+}
+    </pre>
+        </div>
+        <div id="java" class="cntnt">
+    <pre>
+class BinarySearch {
+
+    int binarySearch(int arr[], int x) {
+        int low = 0, high = arr.length - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == x)
+                return mid;
+            if (arr[mid] < x)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return -1;
+    }
+
+    public static void main(String args[]) {
+        BinarySearch ob = new BinarySearch();
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int n = arr.length;
+        int x = 10;
+        int result = ob.binarySearch(arr, x);
+        if (result == -1)
+        System.out.println("Element is not present in array");
+        else
+        System.out.println("Element is present at index " + result);
+    }
+}
+
+    </pre>
+        </div>
+        <div id="py" class="cntnt">
+
+    <pre>
+def binarySearch(arr, low, high, x):
+    while low <= high:
+        mid = low + (high - low) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+if __name__ == '__main__':
+    arr = [2, 3, 4, 10, 40]
+    x = 10
+    result = binarySearch(arr, 0, len(arr)-1, x)
+    if result != -1:
+        print("Element is present at index", result)
+    else:
+        print("Element is not present in array")
+    </pre>
+        </div>
+    </div>
+    
+</body>

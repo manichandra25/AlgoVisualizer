@@ -1,0 +1,271 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="./quick.js"></script>
+</head>
+<body >
+    <header>
+        <div class="main1">
+        <ul>
+          <li ><a href="../../index.html">Home</a></li>
+          <li ><a href="../../index/Algo.html">Algorithms</a></li>
+        </ul>
+        </div>
+    </header>
+    <div class="bub" align="center">
+        <h1>Quick Sort</h1>
+        <p style="width: 70%;font-size: 25px;">
+            QuickSort is a sorting algorithm based on the Divide and Conquer algorithm that picks an element as a pivot 
+            and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
+        </p><br><br>
+        <p style="width: 90%;font-size: 22px;">
+            The key process in quickSort is a partition(). The target of partitions is to place the pivot (any element can be chosen 
+            to be a pivot) at its correct position in the sorted array and put all smaller elements to the left of the pivot, and all 
+            greater elements to the right of the pivot. Partition is done recursively on each side of the pivot after the pivot is 
+            placed in its correct position and this finally sorts the array.
+        </p>
+        <br><br>
+        <div id="expla"></div>
+    </div>
+    <div id="cont" align="center">
+        <div id="cust" >
+            <p>Custom Input<br><br>
+                <table>
+                    <tr><td>Array Size</td>
+                    <td><input type="number" id="find"></td></tr>
+                    <tr><td></td><td><button id="newA">create new</button></td></tr>
+                    <tr><td><br></td></tr>
+                    <tr><td style="font-size:18px;">Speed</td>
+                    <td><select id="speed" style="height: 30px; width: 100px;" onchange="setSpeed()">
+                        <option value="100">Normal</option>
+                        <option value="200">Slow</option>
+                        <option value="50">Fast</option>
+                    </select></td></tr>
+                </table>
+            </p>
+        </div>
+        <div id="visu">
+            <table class="table" id="arr">
+                <caption style="font-size: 25;color: aqua;"> <u>Algorithm Visualization </u></caption>
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ele">
+                    <td>10</td>
+                    <td>5</td>
+                    <td>77</td>
+                    <td>3</td>
+                    <td>14</td>
+                    <td>9</td>
+                    <td>190</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+            </table>
+            <div id="msg" style="border: 5px solid rgb(13, 88, 217);width: 50%;height: 100px;text-align: center;" >
+                <table id="msgs">
+                    <tr><td>Traverse Untill <code>a[i]<=Pivot</code></code></td></tr>
+                    <tr><td>Traverse untill <code>a[j]>Pivot</code></td></tr>
+                    <tr><td>If i < j then swap i and j elements</i>Swap </td></tr>
+                    <tr><td>If i >= j then swap pivot and j th elements</td></tr>
+                </table>
+            </div><br>
+            <button id="rsrt">Reset</button>
+            <button id="strt">Sort</button>
+            <button id="pause">Pause</button>
+            </div>
+    </div>
+    <div class="analyse" align="center">
+        <h2 >Complexity</h2>
+        <table>
+            <tr>
+                <td><a href="#expla" id="wc" onclick="updateArray([2,5,6,8,24,45,90,160,1])">Worst Case</a></td>
+                <td>O( n<sup>2</sup> )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="ac" onclick="updateArray([2,67,45,5,90,76,494,45,2])">Average Case</a></td>
+                <td>O( n*log n )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="bc" onclick="updateArray([3, 7, 8, 5, 2, 1, 9, 5, 4,3])">Best Case</a></td>
+                <td>O( n*log n)</td>
+            </tr>
+        </table>
+    </div>
+    <div id="code">
+        <div class="codes">
+            <button class="proglang" onclick="smapcode(event,'c')">C</button>
+            <button class="proglang" onclick="smapcode(event,'java')">Java</button>
+            <button class="proglang" onclick="smapcode(event,'py')">Python</button>
+        </div>
+        <div id="c" class="cntnt">
+<pre>
+int partition(int arr[], int low, int high) {
+    int pivot = arr[low];
+    int i = low + 1;
+    int j = high;
+    int temp;
+
+    while (i <= j) {
+        if (arr[i] <= pivot) {
+            i++;
+        } else if (arr[j] > pivot) {
+            j--;
+        } else {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    temp = arr[low];
+    arr[low] = arr[j];
+    arr[j] = temp;
+
+    return j; 
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(arr, low, high);
+        quickSort(arr, low, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, high);
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2, 7, 1, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original Array:\n");
+    printArray(arr, n);
+
+    quickSort(arr, 0, n - 1);
+
+    printf("Sorted Array:\n");
+    printArray(arr, n);
+
+    return 0;
+}
+        
+</pre>
+        </div>
+        <div id="java" class="cntnt">
+<pre>
+public class QuickSort {
+
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
+        }
+    }
+
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[low];
+        int i = low + 1;
+        int j = high;
+
+        while (i <= j) {
+            if (arr[i] <= pivot) {
+                i++;
+            } else if (arr[j] > pivot) {
+                j--;
+            } else {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        int temp = arr[low];
+        arr[low] = arr[j];
+        arr[j] = temp;
+
+        return j; // return the pivot index
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 8, 4, 2, 7, 1, 6};
+        int n = arr.length;
+
+        System.out.println("Original Array:");
+        printArray(arr);
+
+        quickSort(arr, 0, n - 1);
+
+        System.out.println("Sorted Array:");
+        printArray(arr);
+    }
+
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+    
+</pre>
+        </div>
+        <div id="py" class="cntnt">
+<pre>
+function partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
+
+    while i <= j:
+        if arr[i] <= pivot:
+            i++
+        else if arr[j] > pivot:
+            j--
+        else:
+            swap arr[i] and arr[j]
+
+    swap arr[low] and arr[j] 
+    return j
+function quickSort(arr, low, high):
+    if low < high:
+        pivotIndex = partition(arr, low, high)
+        quickSort(arr, low, pivotIndex - 1)
+        quickSort(arr, pivotIndex + 1, high)
+
+
+</pre>
+        </div>
+    </div>
+</body>

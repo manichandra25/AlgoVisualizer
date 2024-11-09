@@ -1,0 +1,262 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <script src="./ternary2.js"></script>
+</head>
+<body >
+    <header>
+        <div class="main1">
+        <ul>
+          <li ><a href="../../index.html">Home</a></li>
+          <li ><a href="../../index/Algo.html">Algorithms</a></li>
+        </ul>
+        </div>
+    </header>
+    <div class="bub" align="center">
+        <h1>Ternary Search</h1>
+        <p style="width: 70%;font-size: 25px;">
+            Ternary search is a search algorithm that is used to find the position of a target value within a sorted array. 
+            It operates on the principle of dividing the
+            array into three parts instead of two, as in binary search.
+             The basic idea is to narrow down the search space by comparing 
+             the target value with elements at two points that divide the array into three equal parts.
+        </p><br><br><br>
+        <div id="expla"></div>
+    </div>
+    <div id="cont" align="center">
+        <div id="cust" >
+            <select id="speed" style="height: 40px; width: 100px;" onchange="setSpeed()">
+                <option value="100">Normal</option>
+                <option value="200">Slow</option>
+                <option value="50">Fast</option>
+            </select>
+        </div>
+        <div id="visu">
+            <table class="table" id="arr">
+                <caption style="font-size: 25;color: aqua;"> <u>Algorithm Visualization </u></caption><br><br>
+                <tr>
+                    <td colspan="10">
+                        <label>Element to check ::  </label>
+                        <input type="number" id="find" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="ele">
+                    <td>-84</td>
+                    <td>-51</td>
+                    <td>-12</td>
+                    <td>0</td>
+                    <td>5</td>
+                    <td>14</td>
+                    <td>19</td>
+                    <td>27</td>
+                    <td>59</td>
+                    <td>45</td>
+                    <td>48</td>
+                    <td>71</td>
+                    <td>100</td>
+                    <td>124</td>
+                    <td>190</td>
+                    <td>227</td>
+                    <td>280</td>
+                    <td>299</td>
+                    <td>550</td>
+                </tr>
+            </table><br><br>
+            <div id="msg" style="border: 2px solid black;width: 20%;height: 60px;text-align: center;" >
+                <p  style="margin-top: 2px;"></p><br>
+            </div><br>
+
+            <button id="rsrt">Reset</button>
+            <button id="strt">Find</button>
+            <button id="pause">Pause</button>
+            </div>
+    </div><br><br><br><br>
+    <div class="analyse" align="center">
+        <h2 >Complexity</h2>
+        <table>
+            <tr>
+                <td><a href="#expla" id="wc" onclick="cases(1)">Worst Case</a></td>
+                <td>O( log<sub>3</sub> N )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="ac" onclick="cases(2)">Average Case</a></td>
+                <td>O( log<sub>3</sub> N )</td>
+            </tr>
+            <tr>
+                <td><a href="#expla" id="bc" onclick="cases(3)">Best Case</a></td>
+                <td>O( 1 )</td>
+            </tr>
+        </table>
+    </div>
+    <div id="code">
+        <div class="codes">
+            <button class="proglang" onclick="smapcode(event,'c')">C</button>
+            <button class="proglang" onclick="smapcode(event,'java')">Java</button>
+            <button class="proglang" onclick="smapcode(event,'py')">Python</button>
+        </div>
+        <div id="c" class="cntnt">
+    <pre>
+int ternarySearch(int l, int r, int key, int ar[]) {
+    if (r >= l) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+
+        if (ar[mid1] == key) {
+            return mid1;
+        }
+        if (ar[mid2] == key) {
+            return mid2;
+        }
+
+        if (key < ar[mid1]) {
+            return ternarySearch(l, mid1 - 1, key, ar);
+        } else if (key > ar[mid2]) {
+            return ternarySearch(mid2 + 1, r, key, ar);
+        } else {
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar);
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int l, r, p, key;
+    int ar[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    l = 0;
+    r = 9;
+
+    printf("Enter the key to search: ");
+    scanf("%d", &key);
+
+    p = ternarySearch(l, r, key, ar);
+
+    if (p != -1) {
+        printf("Index of %d is %d\n", key, p);
+    } else {
+        printf("Index of %d not found\n", key);
+    }
+
+    return 0;
+}
+            
+    </pre>
+        </div>
+        <div id="java" class="cntnt">
+
+    <pre>
+class TernarySearch {
+    
+    static int ternarySearch(int l, int r, int key, int ar[]) {
+        if (r >= l) {
+            int mid1 = l + (r - l) / 3;
+            int mid2 = r - (r - l) / 3;
+    
+            if (ar[mid1] == key) {
+                return mid1;
+            }
+            if (ar[mid2] == key) {
+                return mid2;
+            }
+    
+            if (key < ar[mid1]) {
+                return ternarySearch(l, mid1 - 1, key, ar);
+            } else if (key > ar[mid2]) {
+                return ternarySearch(mid2 + 1, r, key, ar);
+            } else {
+                return ternarySearch(mid1 + 1, mid2 - 1, key, ar);
+            }
+        }
+        return -1;
+    }
+    
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int l, r, p, key;
+        int ar[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        l = 0;
+        r = ar.length - 1;
+    
+        System.out.print("Enter the key to search: ");
+        key = sc.nextInt();
+    
+        p = ternarySearch(l, r, key, ar);
+    
+        if (p != -1) {
+            System.out.println("Index of " + key + " is " + p);
+        } else {
+            System.out.println("Index of " + key + " not found");
+        }
+    }
+}
+
+    </pre>
+
+        </div>
+        <div id="py" class="cntnt">
+
+    <pre>
+def ternarySearch(l, r, key, ar):
+    if r >= l:
+        mid1 = l + (r - l) // 3
+        mid2 = r - (r - l) // 3
+
+        if ar[mid1] == key:
+            return mid1
+        if ar[mid2] == key:
+            return mid2
+
+        if key < ar[mid1]:
+            return ternarySearch(l, mid1 - 1, key, ar)
+        elif key > ar[mid2]:
+            return ternarySearch(mid2 + 1, r, key, ar)
+        else:
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar)
+
+    return -1
+
+if __name__ == "__main__":
+    ar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    l = 0
+    r = len(ar) - 1
+
+    key = int(input("Enter the key to search: "))
+
+    p = ternarySearch(l, r, key, ar)
+
+    if p != -1:
+        print(f"Index of {key} is {p}")
+    else:
+        print(f"Index of {key} not found")
+
+    </pre>
+
+        </div>
+    </div>
+    
+</body>
